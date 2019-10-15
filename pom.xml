@@ -7,7 +7,7 @@
     <version>4.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <url>https://github.com/claremontqualitymanagement/TestAutomationFramework</url>
+    <url>https://github.com/claremontqualitymanagement/TAF.RestSupport</url>
     <name>TAF - REST support</name>
     <description>This is the module enabling interacting with and testing REST interfaces with test automation framework TAF</description>
 
@@ -35,55 +35,55 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git://github.com/claremontqualitymanagement/TestAutomationFramework.git</connection>
-        <developerConnection>scm:git://github.com/claremontqualitymanagement/TestAutomationFramework.git</developerConnection>
-        <url>https://github.com/claremontqualitymanagement/TestAutomationFramework</url>
+        <connection>scm:git:git://github.com/claremontqualitymanagement/TAF.RestSupport.git</connection>
+        <developerConnection>scm:git://github.com/claremontqualitymanagement/TAF.RestSupport.git</developerConnection>
+        <url>https://github.com/claremontqualitymanagement/TAF.RestSupport</url>
         <tag>taf.restsupport-4.0.0</tag>
     </scm>
 
     <dependencies>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp/mockwebserver -->
+
+        <!-- REST interactions -->
         <dependency>
-            <groupId>com.squareup.okhttp</groupId>
-            <artifactId>mockwebserver</artifactId>
-            <version>2.7.5</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- For REST interactions -->
-        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp/okhttp -->
-        <dependency>
-            <groupId>com.squareup.okhttp</groupId>
+            <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>2.7.5</version>
+            <version>3.4.1</version>
         </dependency>
-<!--        <dependency>
+        <dependency> <!-- Nedded for OkHttp -->
             <groupId>com.squareup.okio</groupId>
             <artifactId>okio</artifactId>
+            <version>1.11.0</version>
         </dependency>
--->
-        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>mockwebserver</artifactId>
+            <version>3.4.1</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
-            <version>4.4.12</version>
+            <version>4.4.6</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.github.claremontqualitymanagement/taf.json -->
         <dependency>
             <groupId>com.github.claremontqualitymanagement</groupId>
             <artifactId>taf.json</artifactId>
-            <version>4.0.1</version>
+            <version>4.1.1</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.github.claremontqualitymanagement/taf.core -->
         <dependency>
-            <groupId>com.github.claremontqualitymanagement.TestAutomationFramework</groupId>
-            <artifactId>Core</artifactId>
-            <version>3.0.11</version>
+            <groupId>com.github.claremontqualitymanagement</groupId>
+            <artifactId>taf.core</artifactId>
+            <version>4.2.1</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
         <dependency>
@@ -144,21 +144,7 @@
                 </executions>
             </plugin>
 
-            <!-- Sign the file to disable modifications -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
             <!-- Prepare for upload to Maven Central by pointing out nexus server -->
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
@@ -227,5 +213,37 @@
 
         </plugins>
     </build>
+
+    <profiles>
+        <!-- GPG Signature on release -->
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- Sign the file to disable modifications upon release -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
