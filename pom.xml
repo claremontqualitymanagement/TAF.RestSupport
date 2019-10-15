@@ -79,12 +79,6 @@
             <artifactId>taf.json</artifactId>
             <version>4.1.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.claremontqualitymanagement/taf.core -->
-        <dependency>
-            <groupId>com.github.claremontqualitymanagement</groupId>
-            <artifactId>taf.core</artifactId>
-            <version>4.2.1</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
