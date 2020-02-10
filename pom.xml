@@ -14,10 +14,10 @@
 
     <developers>
         <developer>
-            <name>Claremont TAF team</name>
-            <email>jorgen.damberg@claremont.se</email>
-            <organization>Claremont</organization>
-            <organizationUrl>http://www.claremont.se</organizationUrl>
+            <name>Zington TAF team</name>
+            <email>jorgen.damberg@zingtongroup.com</email>
+            <organization>Zington Group</organization>
+            <organizationUrl>http://www.zingtongroup.com</organizationUrl>
         </developer>
     </developers>
 
@@ -59,7 +59,7 @@
         <dependency> <!-- Nedded for OkHttp -->
             <groupId>com.squareup.okio</groupId>
             <artifactId>okio</artifactId>
-            <version>2.4.3</version>
+            <version>1.11.0</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
