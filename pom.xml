@@ -4,7 +4,7 @@
 
     <groupId>com.github.claremontqualitymanagement</groupId>
     <artifactId>taf.restsupport</artifactId>
-    <version>4.0.6</version>
+    <version>4.0.7-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <url>https://github.com/claremontqualitymanagement/TAF.RestSupport</url>
@@ -38,7 +38,7 @@
         <connection>scm:git:git://github.com/claremontqualitymanagement/TAF.RestSupport.git</connection>
         <developerConnection>scm:git://github.com/claremontqualitymanagement/TAF.RestSupport.git</developerConnection>
         <url>https://github.com/claremontqualitymanagement/TAF.RestSupport</url>
-        <tag>taf.restsupport-4.0.6</tag>
+        <tag>taf.restsupport-4.0.0</tag>
     </scm>
 
     <dependencies>
